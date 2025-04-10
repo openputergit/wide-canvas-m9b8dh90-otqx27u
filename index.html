@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RDJM TECHNO - Portal</title>
+    <link rel="icon" href="https://rdjm.tech/portal/includes/RDJM%20TECHNO.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-white min-h-screen transition-all duration-300" data-theme="light">
+    <!-- Theme Toggle and Fullscreen Buttons -->
+    <div class="fixed top-4 right-4 z-50 flex gap-2">
+        <button id="themeToggle" class="clay-button-header p-2 rounded-full">
+            <i class="bi bi-sun-fill text-xl"></i>
+        </button>
+        <button id="fullscreenToggle" class="clay-button-header p-2 rounded-full">
+            <i class="bi bi-fullscreen text-xl"></i>
+        </button>
+    </div>
+
+    <div class="flex">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="fixed md:relative w-72 clay-effect p-6 h-screen z-50 transform -translate-x-full md:translate-x-0 transition-all duration-300 ease-in-out overflow-y-auto">
+            <div class="flex items-center gap-3 mb-8">
+                <center><img src="https://rdjm.tech/portal/includes/rdjm.tech_logo_low.png" alt="RDJM Logo" class="company-logo"></center>
+            </div>
+
+            <nav class="space-y-4">
+                <!-- Dashboard Section -->
+                <div class="menu-item">
+                    <button onclick="toggleSubmenu(this)" class="w-full clay-button-header px-4 py-3 flex items-center justify-between transition-all hover:text-blue-600">
+                        <div class="flex items-center gap-3">
+                            <i class="bi bi-speedometer2 text-lg"></i>
+                            <span class="font-medium">Dashboard</span>
+                        </div>
+                        <i class="bi bi-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="submenu pl-12">
+                        <a href="#" class="submenu-item block py-2 px-4 text-gray-600 hover:text-blue-600 transition-colors">
+                            <i class="bi bi-house-door mr-2"></i>
+                            Home
+                        </a>
+                        <a href="#" class="submenu-item block py-2 px-4 text-gray-600 hover:text-blue-600 transition-colors">
+                            <i class="bi bi-graph-up mr-2"></i>
+                            Analytics
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Projects Section -->
+                <div class="menu-item">
+                    <button onclick="toggleSubmenu(this)" class="w-full clay-button-header px-4 py-3 flex items-center justify-between transition-all hover:text-blue-600">
+                        <div class="flex items-center gap-3">
+                            <i class="bi bi-folder text-lg"></i>
+                            <span class="font-medium">Projects</span>
+                        </div>
+                        <i class="bi bi-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="submenu pl-12">
+                        <a href="#" class="submenu-item block py-2 px-4 text-gray-600 hover:text-blue-600 transition-colors">
+                            <i class="bi bi-list-check mr-2"></i>
+                            All Projects
+                        </a>
+                        <a href="#" class="submenu-item block py-2 px-4 text-gray-600 hover:text-blue-600 transition-colors">
+                            <i class="bi bi-plus-circle mr-2"></i>
+                            New Project
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tasks Section -->
+                <div class="menu-item">
+                    <button onclick="toggleSubmenu(this)" class="w-full clay-button-header px-4 py-3 flex items-center justify-between transition-all hover:text-blue-600">
+                        <div class="flex items-center gap-3">
+                            <i class="bi bi-check2-square text-lg"></i>
+                            <span class="font-medium">Tasks</span>
+                        </div>
+                        <i class="bi bi-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="submenu pl-12">
+                        <a href="#" class="submenu-item block py-2 px-4 text-gray-600 hover:text-blue-600 transition-colors">
+                            <i class="bi bi-list-task mr-2"></i>
+                            My Tasks
+                        </a>
+                        <a href="#" class="submenu-item block py-2 px-4 text-gray-600 hover:text-blue-600 transition-colors">
+                            <i class="bi bi-people mr-2"></i>
+                            Team Tasks
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Separator Line -->
+                <hr class="border-t border-gray-300 my-4">
+
+                <!-- Settings Section -->
+                <div class="menu-item">
+                    <button onclick="toggleSubmenu(this)" class="w-full clay-button-header px-4 py-3 flex items-center justify-between transition-all hover:text-blue-600">
+                        <div class="flex items-center gap-3">
+                            <i class="bi bi-gear text-lg"></i>
+                            <span class="font-medium">Settings</span>
+                        </div>
+                        <i class="bi bi-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="submenu pl-12">
+                        <a href="#" class="submenu-item block py-2 px-4 text-gray-600 hover:text-blue-600 transition-colors">
+                            <i class="bi bi-person-gear mr-2"></i>
+                            Account
+                        </a>
+                        <a href="#" class="submenu-item block py-2 px-4 text-gray-600 hover:text-blue-600 transition-colors">
+                            <i class="bi bi-shield-lock mr-2"></i>
+                            Security
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Help & Support Section -->
+                <div class="menu-item">
+                    <button onclick="toggleSubmenu(this)" class="w-full clay-button-header px-4 py-3 flex items-center justify-between transition-all hover:text-blue-600">
+                        <div class="flex items-center gap-3">
+                            <i class="bi bi-question-circle text-lg"></i>
+                            <span class="font-medium">Help & Support</span>
+                        </div>
+                        <i class="bi bi-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="submenu pl-12">
+                        <a href="#" class="submenu-item block py-2 px-4 text-gray-600 hover:text-blue-600 transition-colors">
+                            <i class="bi bi-book mr-2"></i>
+                            Documentation
+                        </a>
+                        <a href="#" class="submenu-item block py-2 px-4 text-gray-600 hover:text-blue-600 transition-colors">
+                            <i class="bi bi-chat-dots mr-2"></i>
+                            Contact Support
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1">
+            <header class="clay-effect sticky top-0 z-40 p-4">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                        <button id="sidebarToggle" class="md:hidden text-2xl text-gray-600 hover:text-blue-600 transition-colors">
+                            <i class="bi bi-list"></i>
+                        </button>
+                        <h1 class="text-xl font-semibold text-gray-800" id="pageTitle">Dashboard</h1>
+                    </div>
+
+                    <div class="flex items-center gap-4">
+                        <!-- Search -->
+                        <div class="relative hidden md:block">
+                            <input type="text" placeholder="Search..." class="clay-input w-64 px-4 py-2 pl-10 text-sm">
+                            <i class="bi bi-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                        </div>
+
+                        <!-- DateTime -->
+                        <div class="clay-effect px-4 py-2 rounded-full hidden lg:block">
+                            <span id="datetime" class="text-sm text-gray-600"></span>
+                        </div>
+
+                        <!-- User Profile -->
+                        <div class="relative">
+                            <button id="userMenuBtn" class="clay-button-header px-4 py-2 flex items-center gap-3">
+                                <img src="https://ui-avatars.com/api/?name=Admin&background=4F46E5&color=fff" 
+                                     alt="Profile" 
+                                     class="w-8 h-8 rounded-full">
+                                <span class="hidden md:inline text-sm font-medium">Admin</span>
+                                <i class="bi bi-chevron-down"></i>
+                            </button>
+                            <div id="userMenu" class="user-menu clay-effect w-56 py-2 rounded-xl">
+                                <div class="px-4 py-2 border-b border-gray-100">
+                                    <p class="text-sm font-medium text-gray-800">Admin</p>
+                                    <p class="text-xs text-gray-500">Role: Administrator</p>
+                                </div>
+                                <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-blue-50">
+                                    <i class="bi bi-person mr-3"></i>View Profile
+                                </a>
+                                <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-blue-50">
+                                    <i class="bi bi-gear mr-3"></i>Settings
+                                </a>
+                                <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-blue-50">
+                                    <i class="bi bi-bell mr-3"></i>Notifications
+                                </a>
+                                <div class="border-t border-gray-100 mt-2 pt-2">
+                                    <a href="#" class="flex items-center px-4 py-2 text-sm text-red-600 hover:bg-red-50">
+                                        <i class="bi bi-box-arrow-right mr-3"></i>Sign out
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div class="p-6">
+                <!-- Main content area with dashboard widgets -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                    <!-- Statistics Cards -->
+                    <div class="clay-effect p-6 rounded-xl">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="font-medium text-gray-700">Total Users</h3>
+                            <span class="clay-button-header p-2 rounded-full">
+                                <i class="bi bi-people text-blue-600"></i>
+                            </span>
+                        </div>
+                        <p class="text-2xl font-semibold">3,721</p>
+                        <p class="text-sm text-green-500 flex items-center mt-2">
+                            <i class="bi bi-arrow-up mr-1"></i> 12% increase
+                        </p>
+                    </div>
+
+                    <div class="clay-effect p-6 rounded-xl">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="font-medium text-gray-700">Total Revenue</h3>
+                            <span class="clay-button-header p-2 rounded-full">
+                                <i class="bi bi-currency-dollar text-green-600"></i>
+                            </span>
+                        </div>
+                        <p class="text-2xl font-semibold">$48,932</p>
+                        <p class="text-sm text-green-500 flex items-center mt-2">
+                            <i class="bi bi-arrow-up mr-1"></i> 8.3% increase
+                        </p>
+                    </div>
+
+                    <div class="clay-effect p-6 rounded-xl">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="font-medium text-gray-700">Active Projects</h3>
+                            <span class="clay-button-header p-2 rounded-full">
+                                <i class="bi bi-folder2-open text-purple-600"></i>
+                            </span>
+                        </div>
+                        <p class="text-2xl font-semibold">26</p>
+                        <p class="text-sm text-gray-500 flex items-center mt-2">
+                            <i class="bi bi-arrow-right mr-1"></i> 4 due this week
+                        </p>
+                    </div>
+
+                    <div class="clay-effect p-6 rounded-xl">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="font-medium text-gray-700">Task Completion</h3>
+                            <span class="clay-button-header p-2 rounded-full">
+                                <i class="bi bi-check2-all text-teal-600"></i>
+                            </span>
+                        </div>
+                        <p class="text-2xl font-semibold">78%</p>
+                        <p class="text-sm text-red-500 flex items-center mt-2">
+                            <i class="bi bi-arrow-down mr-1"></i> 3% decrease
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Recent Activity and AI Assistant -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <!-- Recent Activity -->
+                    <div class="clay-effect p-6 rounded-xl lg:col-span-2">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="text-lg font-semibold text-gray-800">Recent Activity</h3>
+                            <button class="clay-button-header px-3 py-1 text-sm">View All</button>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-4 p-4 rounded-lg hover:bg-blue-50 transition-colors">
+                                <div class="clay-button-header p-2 rounded-full">
+                                    <i class="bi bi-file-earmark-text text-blue-600"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-medium">New project created</h4>
+                                    <p class="text-sm text-gray-600">Project "E-commerce Platform" was created by Jane Doe</p>
+                                    <span class="text-xs text-gray-500">2 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4 p-4 rounded-lg hover:bg-blue-50 transition-colors">
+                                <div class="clay-button-header p-2 rounded-full">
+                                    <i class="bi bi-check2-square text-green-600"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-medium">Task completed</h4>
+                                    <p class="text-sm text-gray-600">Task "Update user dashboard" was completed by John Smith</p>
+                                    <span class="text-xs text-gray-500">5 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4 p-4 rounded-lg hover:bg-blue-50 transition-colors">
+                                <div class="clay-button-header p-2 rounded-full">
+                                    <i class="bi bi-person-plus text-purple-600"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-medium">New team member</h4>
+                                    <p class="text-sm text-gray-600">Alex Johnson joined the development team</p>
+                                    <span class="text-xs text-gray-500">Yesterday</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AI Assistant -->
+                    <div class="clay-effect p-6 rounded-xl">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="text-lg font-semibold text-gray-800">AI Assistant</h3>
+                            <span class="clay-button-header px-3 py-1 text-sm flex items-center">
+                                <span class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+                                Active
+                            </span>
+                        </div>
+                        <div class="mb-4 overflow-y-auto max-h-60 p-4 rounded-lg bg-opacity-50" id="chatMessages">
+                            <div class="flex flex-col gap-3">
+                                <div class="flex items-start gap-2">
+                                    <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+                                        <i class="bi bi-robot text-blue-600"></i>
+                                    </div>
+                                    <div class="clay-effect p-3 rounded-lg max-w-[80%]">
+                                        <p class="text-sm">Hello! How can I assist you today?</p>
+                                        <span class="text-xs text-gray-500">10:35 AM</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <input type="text" id="aiInput" class="clay-input w-full pl-4 pr-12 py-3 text-sm" placeholder="Ask something...">
+                            <button id="sendAiMessage" class="absolute right-3 top-1/2 transform -translate-y-1/2 clay-button-header w-8 h-8 flex items-center justify-center rounded-full">
+                                <i class="bi bi-send"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Sidebar Toggle
+        const sidebar = document.getElementById('sidebar');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('-translate-x-full');
+        });
+
+        // Submenu Toggle
+        function toggleSubmenu(button) {
+            const submenu = button.nextElementSibling;
+            const icon = button.querySelector('.bi-chevron-down');
+            const allSubmenus = document.querySelectorAll('.submenu');
+            const allIcons = document.querySelectorAll('.menu-item .bi-chevron-down');
+            
+            // Close other submenus
+            allSubmenus.forEach(menu => {
+                if (menu !== submenu && menu.classList.contains('active')) {
+                    menu.classList.remove('active');
+                }
+            });
+            
+            allIcons.forEach(i => {
+                if (i !== icon) i.style.transform = 'rotate(0)';
+            });
+
+            submenu.classList.toggle('active');
+            icon.style.transform = submenu.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0)';
+        }
+
+        // DateTime update
+        function updateDateTime() {
+            const now = new Date();
+            const options = { 
+                weekday: 'short', 
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric',
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit' 
+            };
+            document.getElementById('datetime').textContent = now.toLocaleDateString('en-US', options);
+        }
+        
+        setInterval(updateDateTime, 1000);
+        updateDateTime();
+
+        // User menu toggle
+        const userMenuBtn = document.getElementById('userMenuBtn');
+        const userMenu = document.getElementById('userMenu');
+
+        userMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            userMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!userMenuBtn.contains(e.target) && !userMenu.contains(e.target)) {
+                userMenu.classList.remove('active');
+            }
+        });
+
+        // Close sidebar on mobile when clicking outside
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth < 768 && 
+                !sidebar.contains(e.target) && 
+                !sidebarToggle.contains(e.target) && 
+                !sidebar.classList.contains('-translate-x-full')) {
+                sidebar.classList.add('-translate-x-full');
+            }
+        });
+
+        // Theme Toggle Functionality
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const themeIcon = themeToggleBtn.querySelector('i');
+        const body = document.body;
+
+        themeToggleBtn.addEventListener('click', () => {
+            if (body.getAttribute('data-theme') === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeIcon.classList.remove('bi-sun-fill');
+                themeIcon.classList.add('bi-moon-fill');
+                body.classList.remove('from-blue-50', 'to-white');
+                body.classList.add('from-gray-900', 'to-gray-800');
+                // Update glassmorphism colors for dark theme
+                document.documentElement.style.setProperty('--glass-bg', 'rgba(17, 24, 39, 0.95)');
+                document.documentElement.style.setProperty('--glass-shadow', 'rgba(0, 0, 0, 0.3)');
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeIcon.classList.remove('bi-moon-fill');
+                themeIcon.classList.add('bi-sun-fill');
+                body.classList.remove('from-gray-900', 'to-gray-800');
+                body.classList.add('from-blue-50', 'to-white');
+                // Update glassmorphism colors for light theme
+                document.documentElement.style.setProperty('--glass-bg', 'rgba(255, 255, 255, 0.95)');
+                document.documentElement.style.setProperty('--glass-shadow', 'rgba(145, 192, 255, 0.3)');
+            }
+            updateGlassmorphism();
+        });
+
+        // Fullscreen Toggle Functionality
+        const fullscreenToggleBtn = document.getElementById('fullscreenToggle');
+        const fullscreenIcon = fullscreenToggleBtn.querySelector('i');
+
+        fullscreenToggleBtn.addEventListener('click', () => {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    console.error(`Error attempting to enable fullscreen: ${err.message}`);
+                });
+                fullscreenIcon.classList.remove('bi-fullscreen');
+                fullscreenIcon.classList.add('bi-fullscreen-exit');
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                    fullscreenIcon.classList.remove('bi-fullscreen-exit');
+                    fullscreenIcon.classList.add('bi-fullscreen');
+                }
+            }
+        });
+
+        // AI Assistant functionality
+        const aiInput = document.getElementById('aiInput');
+        const sendAiMessage = document.getElementById('sendAiMessage');
+        const chatMessages = document.getElementById('chatMessages');
+
+        sendAiMessage.addEventListener('click', sendMessage);
+        aiInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        function sendMessage() {
+            const message = aiInput.value.trim();
+            if (!message) return;
+
+            // Add user message
+            const now = new Date();
+            const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            
+            const userMessageHTML = `
+                <div class="flex items-start gap-2 justify-end">
+                    <div class="clay-effect p-3 rounded-lg max-w-[80%] bg-blue-50">
+                        <p class="text-sm">${message}</p>
+                        <span class="text-xs text-gray-500">${timeString}</span>
+                    </div>
+                    <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center">
+                        <i class="bi bi-person text-white"></i>
+                    </div>
+                </div>
+            `;
+            
+            chatMessages.innerHTML += userMessageHTML;
+            aiInput.value = '';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            
+            // Show loading
+            chatMessages.innerHTML += `
+                <div class="flex items-start gap-2" id="aiTyping">
+                    <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+                        <i class="bi bi-robot text-blue-600"></i>
+                    </div>
+                    <div class="clay-effect p-3 rounded-lg">
+                        <p class="text-sm flex gap-1">
+                            <span class="animate-bounce">●</span>
+                            <span class="animate-bounce" style="animation-delay: 0.2s">●</span>
+                            <span class="animate-bounce" style="animation-delay: 0.4s">●</span>
+                        </p>
+                    </div>
+                </div>
+            `;
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            
+            // Simulate AI response after delay
+            setTimeout(() => {
+                const aiTyping = document.getElementById('aiTyping');
+                aiTyping.remove();
+                
+                // Generate response based on input
+                let aiResponse = getAIResponse(message);
+                
+                const aiMessageHTML = `
+                    <div class="flex items-start gap-2">
+                        <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+                            <i class="bi bi-robot text-blue-600"></i>
+                        </div>
+                        <div class="clay-effect p-3 rounded-lg max-w-[80%]">
+                            <p class="text-sm">${aiResponse}</p>
+                            <span class="text-xs text-gray-500">${timeString}</span>
+                        </div>
+                    </div>
+                `;
+                
+                chatMessages.innerHTML += aiMessageHTML;
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 1500);
+        }
+
+        // Simple AI response generator
+        function getAIResponse(message) {
+            message = message.toLowerCase();
+            
+            if (message.includes('hello') || message.includes('hi')) {
+                return 'Hello! How can I help you today?';
+            } else if (message.includes('project') || message.includes('task')) {
+                return 'I can help you manage your projects and tasks. Would you like me to show you recent updates or help you create a new item?';
+            } else if (message.includes('report') || message.includes('analytic')) {
+                return 'I can generate reports and analytics for you. What specific data are you looking for?';
+            } else if (message.includes('help')) {
+                return 'I\'m here to help! You can ask me about projects, tasks, team members, or any other portal feature.';
+            } else if (message.includes('setting')) {
+                return 'You can access all settings from the Settings menu in the sidebar. What specific settings are you looking for?';
+            } else {
+                return 'Thanks for your message. I\'ll analyze that and get back to you with more information. Is there anything specific you need help with?';
+            }
+        }
+
+        // Update glassmorphism effect based on theme
+        function updateGlassmorphism() {
+            const glassElements = document.querySelectorAll('.clay-effect, .clay-button-header, .clay-input');
+            const isDark = body.getAttribute('data-theme') === 'dark';
+            
+            glassElements.forEach(element => {
+                if (isDark) {
+                    element.style.background = 'rgba(17, 24, 39, 0.95)';
+                    element.style.color = '#fff';
+                    element.style.boxShadow = 
+                        `35px 35px 68px 0px rgba(0, 0, 0, 0.3),
+                        inset -8px -8px 16px 0px rgba(0, 0, 0, 0.4),
+                        inset 0px 11px 28px 0px rgba(255, 255, 255, 0.1)`;
+                } else {
+                    element.style.background = 'rgba(255, 255, 255, 0.95)';
+                    element.style.color = 'inherit';
+                    element.style.boxShadow = 
+                        `35px 35px 68px 0px rgba(145, 192, 255, 0.3),
+                        inset -8px -8px 16px 0px rgba(145, 192, 255, 0.4),
+                        inset 0px 11px 28px 0px rgb(255, 255, 255)`;
+                }
+
+                if (element.classList.contains('clay-button-header')) {
+                    if (isDark) {
+                        element.style.boxShadow = 
+                            `8px 8px 16px 0px rgba(0, 0, 0, 0.3),
+                            inset -2px -2px 4px 0px rgba(0, 0, 0, 0.4),
+                            inset 0px 4px 8px 0px rgba(255, 255, 255, 0.1)`;
+                    } else {
+                        element.style.boxShadow = 
+                            `8px 8px 16px 0px rgba(145, 192, 255, 0.3),
+                            inset -2px -2px 4px 0px rgba(145, 192, 255, 0.4),
+                            inset 0px 4px 8px 0px rgb(255, 255, 255)`;
+                    }
+                }
+                
+                if (element.classList.contains('clay-input')) {
+                    if (isDark) {
+                        element.style.boxShadow = 
+                            `inset 4px 4px 8px 0px rgba(0, 0, 0, 0.3),
+                            inset -2px -2px 4px 0px rgba(255, 255, 255, 0.1)`;
+                    } else {
+                        element.style.boxShadow = 
+                            `inset 4px 4px 8px 0px rgba(145, 192, 255, 0.3),
+                            inset -2px -2px 4px 0px rgb(255, 255, 255)`;
+                    }
+                }
+            });
+
+            // Update text colors for submenu items
+            const submenuItems = document.querySelectorAll('.submenu-item');
+            submenuItems.forEach(item => {
+                if (isDark) {
+                    item.classList.remove('text-gray-600', 'hover:text-blue-600');
+                    item.classList.add('text-gray-300', 'hover:text-blue-300');
+                } else {
+                    item.classList.remove('text-gray-300', 'hover:text-blue-300');
+                    item.classList.add('text-gray-600', 'hover:text-blue-600');
+                }
+            });
+        }
+
+        // Update theme-specific styles initially and when theme changes
+        const observer = new MutationObserver(() => {
+            updateGlassmorphism();
+        });
+
+        observer.observe(body, {
+            attributes: true,
+            attributeFilter: ['data-theme']
+        });
+
+        // Initial application of glassmorphism effect
+        updateGlassmorphism();
+        
+        // Listen for fullscreen change events from browser
+        document.addEventListener('fullscreenchange', () => {
+            if (!document.fullscreenElement) {
+                fullscreenIcon.classList.remove('bi-fullscreen-exit');
+                fullscreenIcon.classList.add('bi-fullscreen');
+            } else {
+                fullscreenIcon.classList.remove('bi-fullscreen');
+                fullscreenIcon.classList.add('bi-fullscreen-exit');
+            }
+        });
+    </script>
+
+    <style>
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Glass morphism base variables */
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.95);
+            --glass-shadow: rgba(145, 192, 255, 0.3);
+            --glass-border: rgba(255, 255, 255, 0.18);
+        }
+
+        [data-theme="dark"] {
+            --glass-bg: rgba(17, 24, 39, 0.95);
+            --glass-shadow: rgba(0, 0, 0, 0.3);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        [data-theme="light"] {
+            --glass-bg: rgba(255, 255, 255, 0.95);
+            --glass-shadow: rgba(145, 192, 255, 0.3);
+            --glass-border: rgba(255, 255, 255, 0.18);
+            color: #000;
+        }
+
+        .clay-effect {
+            background: var(--glass-bg);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+        }
+
+        .clay-button-header {
+            background: var(--glass-bg);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+        }
+
+        .clay-button-header:hover {
+            transform: translateY(-2px);
+        }
+
+        .clay-input {
+            background: var(--glass-bg);
+            border-radius: 24px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+        }
+
+        .submenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease-out;
+        }
+
+        .submenu.active {
+            max-height: 500px;
+            margin-top: 0.5rem;
+        }
+
+        .submenu-item {
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .submenu.active .submenu-item {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .user-menu {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            margin-top: 0.5rem;
+            z-index: 50;
+        }
+
+        .user-menu.active {
+            display: block;
+            animation: slideDown 0.3s ease forwards;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .network-indicator {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background: var(--glass-bg);
+            border-radius: 24px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+        }
+
+        .pulse {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #22c55e;
+            margin-right: 8px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(34, 197, 94, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+            }
+        }
+
+        .company-logo {
+            max-height: 40px;
+            width: auto;
+        }
+
+        /* Specific styling for input in dark theme */
+        [data-theme="dark"] input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        [data-theme="dark"] .text-gray-600 {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        [data-theme="dark"] .text-gray-800 {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        [data-theme="dark"] .border-gray-100 {
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        [data-theme="dark"] .border-gray-300 {
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        [data-theme="dark"] .hover\:bg-blue-50:hover {
+            background-color: rgba(59, 130, 246, 0.2);
+        }
+
+        [data-theme="dark"] .hover\:bg-red-50:hover {
+            background-color: rgba(239, 68, 68, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+            
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .company-logo {
+                max-height: 32px;
+            }
+        }
+    </style>
+<script>document.body.addEventListener('wheel', e => { if (!e.ctrlKey) return; e.preventDefault(); return }, { passive: false })</script>
+	</body>
+</html>
